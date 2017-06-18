@@ -1,4 +1,4 @@
-package sample;
+package esgi.jobseeker;
 
 public class Controller {
 }

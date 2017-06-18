@@ -1,4 +1,4 @@
-package sample;
+package esgi.jobseeker;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +10,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load(getClass().getResource("connection.fxml"));
+        primaryStage.setTitle("JobSeekerSupervisor : connexion");
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
