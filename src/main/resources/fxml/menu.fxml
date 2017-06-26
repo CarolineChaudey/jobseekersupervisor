@@ -3,21 +3,27 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.layout.Pane?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esgi.jobseeker.MenuController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Annonces">
+            <items>
+              <MenuItem disable="true" mnemonicParsing="false" text="Nouvelle" />
+              <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" text="Liste" onAction="#goToAds"/>
+            </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Statistiques globales" disable="true">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Statistiques individuelles" disable="true">
+          <Menu disable="true" mnemonicParsing="false" text="Statistiques individuelles">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
             </items>
@@ -25,4 +31,7 @@
         </menus>
       </MenuBar>
    </top>
+    <center>
+        <Pane fx:id="content"></Pane>
+    </center>
 </BorderPane>

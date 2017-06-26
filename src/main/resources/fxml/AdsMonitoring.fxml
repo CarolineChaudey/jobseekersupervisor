@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <TableView prefHeight="600.0" prefWidth="800.0">
+        <columns>
+          <TableColumn prefWidth="98.0" text="entreprise" />
+          <TableColumn prefWidth="86.0" text="poste" />
+            <TableColumn prefWidth="75.0" text="date" />
+            <TableColumn prefWidth="96.0" text="durée" />
+            <TableColumn prefWidth="84.0" text="contrats" />
+            <TableColumn prefWidth="77.0" text="modifier" />
+            <TableColumn prefWidth="54.0" text="clore" />
+        </columns>
+      </TableView>
+   </content>
+</ScrollPane>
