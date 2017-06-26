@@ -1,6 +1,5 @@
 package esgi.jobseeker;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-
-import java.io.IOException;
 
 public class ConnectionController {
     @FXML
@@ -42,10 +38,10 @@ public class ConnectionController {
         Parent root;
         try {
 
-            root = FXMLLoader.load(getClass().getResource("/fxml/test.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/fxml/menu.fxml"));
             Stage stage = new Stage();
             stage.setTitle("JobSeekerSupervisor");
-            stage.setScene(new Scene(root, 450, 450));
+            stage.setScene(new Scene(root, 800, 600));
             stage.show();
             Stage newStage = (Stage) ((Node)(this.loginField)).getScene().getWindow();
             newStage.close();
