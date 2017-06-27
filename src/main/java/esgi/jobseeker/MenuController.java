@@ -19,11 +19,19 @@ public class MenuController {
     @FXML
     public void goToAds(ActionEvent event) {
         System.out.println("MenuController :: goToAds");
-        //if (null == content.getChildren()) {
-            content.getChildren().clear();
-        //}
+        changeSubView("/fxml/AdsMonitoring.fxml");
+    }
+
+    @FXML
+    public void goToCreateAd(ActionEvent event) {
+        System.out.println("MenuController :: goToCreateAd");
+        changeSubView("/fxml/adForm.fxml");
+    }
+
+    private void changeSubView(String subViewPath) {
+        content.getChildren().clear();
         try {
-            Node stage = FXMLLoader.load(getClass().getResource("/fxml/AdsMonitoring.fxml"));
+            Node stage = FXMLLoader.load(getClass().getResource(subViewPath));
             content.getChildren().add(stage);
         } catch (Exception e) {
             e.printStackTrace();

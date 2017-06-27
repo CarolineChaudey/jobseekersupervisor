@@ -13,7 +13,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Annonces">
             <items>
-              <MenuItem disable="true" mnemonicParsing="false" text="Nouvelle" />
+              <MenuItem mnemonicParsing="false" text="Nouvelle annonce" onAction="#goToCreateAd" />
               <SeparatorMenuItem mnemonicParsing="false" />
               <MenuItem mnemonicParsing="false" text="Liste" onAction="#goToAds"/>
             </items>
