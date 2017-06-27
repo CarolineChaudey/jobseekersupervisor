@@ -1,4 +1,4 @@
-package esgi.jobseeker;
+package esgi.jobseeker.controllers;
 
 /**
  * Created by caroline on 26/06/17.

@@ -54,7 +54,7 @@
             <Insets bottom="10.0" />
          </VBox.margin>
       </HBox>
-      <Button alignment="BOTTOM_RIGHT" mnemonicParsing="false" style="-fx-background-color: # 2baa29;" text="Publier" textAlignment="CENTER">
+      <Button alignment="BOTTOM_RIGHT" mnemonicParsing="false" style="-fx-background-color: 2baa29;" text="Publier" textAlignment="CENTER">
          <effect>
             <DropShadow />
          </effect>

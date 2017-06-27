@@ -1,4 +1,4 @@
-package esgi.jobseeker;
+package esgi.jobseeker.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
