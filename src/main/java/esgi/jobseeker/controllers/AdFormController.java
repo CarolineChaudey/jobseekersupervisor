@@ -62,8 +62,9 @@ public class AdFormController {
         AdToSend adToSend = new AdToSend(ad);
         System.out.println(adToSend.toString());
         boolean hasSucceeded = WebserviceConnector.getInstance().saveAd(adToSend);
+        System.out.println(hasSucceeded);
         if (hasSucceeded) {
-            showDialog(Alert.AlertType.CONFIRMATION, "Annonce enregistrée.",
+            showDialog(Alert.AlertType.INFORMATION, "Annonce enregistrée.",
                     "La nouvelle annonce est sauvegardée et en ligne.");
             resetForm();
         } else {
@@ -76,6 +77,7 @@ public class AdFormController {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setContentText(content);
+        alert.showAndWait();
     }
 
     private void resetForm() {

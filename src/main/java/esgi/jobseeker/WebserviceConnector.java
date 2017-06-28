@@ -9,6 +9,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -63,7 +64,9 @@ public class WebserviceConnector {
         System.out.println(postRequest.getURI().toString());
         postRequest.setEntity(createStringEntity(ad));
         HttpResponse response = client.execute(postRequest);
-        return verifyResponse(response, 201);
+        boolean responseOk =verifyResponse(response, 201);
+        EntityUtils.consume(response.getEntity());
+        return responseOk;
     }
 
     private boolean verifyResponse(HttpResponse response, int requiredCode) throws IOException {
