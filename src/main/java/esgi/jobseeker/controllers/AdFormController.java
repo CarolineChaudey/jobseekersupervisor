@@ -35,8 +35,6 @@ public class AdFormController {
     private TextField tags;
     @FXML
     private ComboBox<Website> websiteComboBox;
-    //@FXML
-    //private ComboBox<ContractType> contractTypeComboBox;
     @FXML
     private CheckComboBox<ContractType> contractTypeCheckComboBox;
 
@@ -47,17 +45,17 @@ public class AdFormController {
         List<Website> websites = WebserviceConnector.getInstance().getAllWebsites();
         List<ContractType> contractTypes = WebserviceConnector.getInstance().getAllContractTypes();
         websiteComboBox.setItems(FXCollections.observableArrayList(websites));
-        //contractTypeComboBox.setItems(FXCollections.observableArrayList(contractTypes));
         contractTypeCheckComboBox.getItems().addAll(contractTypes);
     }
 
     @FXML
-    public void submitAd(ActionEvent event) {
+    public void submitAd(ActionEvent event) throws Exception {
         System.out.println("AdFormController :: submitAd");
         Ad ad = new Ad(null, position.getText(), description.getText(), email.getText(), url.getText(),
                         organization.getText(), convertedTags(), null, websiteComboBox.getValue(),
                         null);
         System.out.println(ad.toString());
+        WebserviceConnector.getInstance().saveAd(ad);
     }
 
     private List<String> convertedTags() {

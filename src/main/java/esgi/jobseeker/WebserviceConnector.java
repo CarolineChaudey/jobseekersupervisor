@@ -2,6 +2,7 @@ package esgi.jobseeker;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import esgi.jobseeker.model.Ad;
 import esgi.jobseeker.model.ContractType;
 import esgi.jobseeker.model.Login;
 import esgi.jobseeker.model.Website;
@@ -40,19 +41,35 @@ public class WebserviceConnector {
     }
 
     public boolean getConnectionToken(String login, String pswd) throws Exception {
-
         HttpPost postRequest = new HttpPost(this.urlBase + "/users/supervisor-auth");
         postRequest.addHeader("Content-Type", "application/json");
         System.out.println(postRequest.getURI().toString());
         Login credentials = new Login(login, pswd);
         postRequest.setEntity(createStringEntity(credentials));
         HttpResponse response = client.execute(postRequest);
-        if (response.getStatusLine().getStatusCode() != 200) {
+        if (!verifyResponse(response, 200)) {
+            return false;
+        }
+        this.token = getContentFromResponse(response);
+        return true;
+    }
+
+    public boolean saveAd(Ad ad) throws Exception {
+        HttpPost postRequest = new HttpPost(this.urlBase + "/ads/");
+        postRequest.addHeader("Content-Type", "application/json");
+        postRequest.addHeader("Authorisation", this.token);
+        System.out.println(postRequest.getURI().toString());
+        postRequest.setEntity(createStringEntity(ad));
+        HttpResponse response = client.execute(postRequest);
+        return verifyResponse(response, 201);
+    }
+
+    private boolean verifyResponse(HttpResponse response, int requiredCode) throws IOException {
+        if (response.getStatusLine().getStatusCode() != requiredCode) {
             System.out.println("Failed : HTTP error code : " + response.getStatusLine().getStatusCode());
             System.out.println("Failed : HTTP detail : " + getContentFromResponse(response));
             return false;
         }
-        this.token = getContentFromResponse(response);
         return true;
     }
 
