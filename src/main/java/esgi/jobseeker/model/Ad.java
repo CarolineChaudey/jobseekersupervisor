@@ -12,6 +12,7 @@ public class Ad {
     private String description;
     private String email;
     private String url;
+    private int jobDuration;
     private Date publicationDate;
     private String company;
     private List<String> tags;
@@ -19,7 +20,7 @@ public class Ad {
     private Website website;
     private Supervisor author;
 
-    public Ad(String id, String position, String description, String email, String url, String company,
+    public Ad(String id, String position, String description, String email, String url, String company, int jobDuration,
               List<String> tags, List<ContractType> proposedContracts, Website website, Supervisor author) {
         this.id = id;
         this.position = position;
@@ -27,6 +28,7 @@ public class Ad {
         this.email = email;
         this.url = url;
         this.company = company;
+        this.jobDuration = jobDuration;
         this.tags = tags;
         this.contractTypes = proposedContracts;
         this.website = website;
@@ -72,6 +74,14 @@ public class Ad {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public int getJobDuration() {
+        return jobDuration;
+    }
+
+    public void setJobDuration(int jobDuration) {
+        this.jobDuration = jobDuration;
     }
 
     public String getCompany() {
@@ -121,21 +131,7 @@ public class Ad {
     public void setPublicationDate(Date publicationDate) {
         this.publicationDate = publicationDate;
     }
-/*
-    public String toJson() {
-        return "{" +
-                "\"position:\"" + position + "," +
-                "\"description:\"" + description + "," +
-                "\"publicationDate:\"" + publicationDate + "," +
-                "\"email:\"" + email + "," +
-                "\"url:\"" + url + "," +
-                "\"company:\"" + company + "," +
-                "\"website:\"" + website + "," +
-                "\"tags:\"" + tags.toString() + "," +
-                "\"contractTypes:\"" + contractTypes.toString() + "," +
-                "}";
-    }
-*/
+
     @Override
     public String toString() {
         return "Ad{" +
@@ -144,10 +140,11 @@ public class Ad {
                 ", description='" + description + '\'' +
                 ", email='" + email + '\'' +
                 ", url='" + url + '\'' +
+                ", jobDuration=" + jobDuration +
                 ", publicationDate=" + publicationDate +
                 ", company='" + company + '\'' +
                 ", tags=" + tags +
-                ", proposedContracts=" + contractTypes +
+                ", contractTypes=" + contractTypes +
                 ", website=" + website +
                 ", author=" + author +
                 '}';

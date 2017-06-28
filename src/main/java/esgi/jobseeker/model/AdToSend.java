@@ -10,10 +10,11 @@ import java.util.List;
 public class AdToSend {
     private String position;
     private String description;
-    private String email;
-    private String url;
+    private String contactEmail;
+    private String urlApplication;
     private Date publicationDate;
     private String company;
+    private int jobDuration;
     private List<String> tags;
     private List<String> contractTypes;
     private String website;
@@ -21,10 +22,11 @@ public class AdToSend {
     public AdToSend(Ad ad) {
         this.position = ad.getPosition();
         this.description = ad.getDescription();
-        this.email = ad.getEmail();
-        this.url = ad.getUrl();
+        this.contactEmail = ad.getEmail();
+        this.urlApplication = ad.getUrl();
         this.company = ad.getCompany();
         this.tags = ad.getTags();
+        this.jobDuration = ad.getJobDuration();
         if (null != ad.getWebsite()) {
             this.website = ad.getWebsite().getName();
         }
@@ -56,20 +58,20 @@ public class AdToSend {
         this.description = description;
     }
 
-    public String getEmail() {
-        return email;
+    public String getContactEmail() {
+        return contactEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
     }
 
-    public String getUrl() {
-        return url;
+    public String getUrlApplication() {
+        return urlApplication;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setUrlApplication(String urlApplication) {
+        this.urlApplication = urlApplication;
     }
 
     public String getCompany() {
@@ -90,6 +92,14 @@ public class AdToSend {
 
     public List<String> getContractTypes() {
         return contractTypes;
+    }
+
+    public int getJobDuration() {
+        return jobDuration;
+    }
+
+    public void setJobDuration(int jobDuration) {
+        this.jobDuration = jobDuration;
     }
 
     public void setContractTypes(List<String> contractTypes) {
@@ -114,16 +124,17 @@ public class AdToSend {
 
     @Override
     public String toString() {
-        return "Ad{" +
-                ", position='" + position + '\'' +
+        return "AdToSend{" +
+                "position='" + position + '\'' +
                 ", description='" + description + '\'' +
-                ", email='" + email + '\'' +
-                ", url='" + url + '\'' +
+                ", contactEmail='" + contactEmail + '\'' +
+                ", urlApplication='" + urlApplication + '\'' +
                 ", publicationDate=" + publicationDate +
                 ", company='" + company + '\'' +
+                ", jobDuration=" + jobDuration +
                 ", tags=" + tags +
-                ", proposedContracts=" + contractTypes +
-                ", website=" + website +
+                ", contractTypes=" + contractTypes +
+                ", website='" + website + '\'' +
                 '}';
     }
 }

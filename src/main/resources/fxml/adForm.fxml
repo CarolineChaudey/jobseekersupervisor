@@ -20,11 +20,11 @@
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin></TextArea>
-      <TextField fx:id="email" promptText="email de contact">
+      <TextField fx:id="contactEmail" promptText="contactEmail de contact">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin></TextField>
-      <TextField fx:id="url" promptText="url de l'annonce">
+      <TextField fx:id="urlApplication" promptText="urlApplication de l'annonce">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin></TextField>

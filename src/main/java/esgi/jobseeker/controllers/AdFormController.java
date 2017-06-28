@@ -25,9 +25,9 @@ public class AdFormController {
     @FXML
     private TextArea description;
     @FXML
-    private TextField email;
+    private TextField contactEmail;
     @FXML
-    private TextField url;
+    private TextField urlApplication;
     @FXML
     private TextField jobDuration;
     @FXML
@@ -52,9 +52,9 @@ public class AdFormController {
     @FXML
     public void submitAd(ActionEvent event) throws Exception {
         System.out.println("AdFormController :: submitAd");
-        Ad ad = new Ad(null, position.getText(), description.getText(), email.getText(), url.getText(),
-                        company.getText(), convertedTags(), contractTypeCheckComboBox.getCheckModel().getCheckedItems(),
-                        websiteComboBox.getValue(), null);
+        Ad ad = new Ad(null, position.getText(), description.getText(), contactEmail.getText(), urlApplication.getText(),
+                        company.getText(), Integer.parseInt(jobDuration.getText()), convertedTags(),
+                        contractTypeCheckComboBox.getCheckModel().getCheckedItems(), websiteComboBox.getValue(), null);
         AdToSend adToSend = new AdToSend(ad);
         System.out.println(adToSend.toString());
         WebserviceConnector.getInstance().saveAd(adToSend);
