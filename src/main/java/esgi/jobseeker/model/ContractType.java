@@ -20,8 +20,6 @@ public class ContractType {
 
     @Override
     public String toString() {
-        return "ContractType{" +
-                "name='" + name + '\'' +
-                '}';
+        return this.name;
     }
 }

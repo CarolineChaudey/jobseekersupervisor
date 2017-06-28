@@ -9,43 +9,43 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esgi.jobseeker.controllers.AdFormController">
    <children>
-      <TextField promptText="poste">
+      <TextField fx:id="position" promptText="poste">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin></TextField>
-      <TextArea prefHeight="143.0" prefWidth="582.0" promptText="description">
+      <TextArea fx:id="description" prefHeight="143.0" prefWidth="582.0" promptText="description">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin></TextArea>
-      <TextField promptText="email de contact">
+      <TextField fx:id="email" promptText="email de contact">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin></TextField>
-      <TextField promptText="url de l'annonce">
+      <TextField fx:id="url" promptText="url de l'annonce">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin></TextField>
-      <TextField promptText="durée (en mois)">
+      <TextField fx:id="jobDuration" promptText="durée (en mois)">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin></TextField>
-      <TextField promptText="entreprise">
+      <TextField fx:id="organization" promptText="entreprise">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin></TextField>
-      <TextField promptText="tags associés (séparés par une virgule)">
+      <TextField fx:id="tags" promptText="tags associés (séparés par une virgule)">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin></TextField>
       <HBox prefHeight="48.0" prefWidth="600.0">
          <children>
-            <ComboBox prefHeight="26.0" prefWidth="223.0" promptText="type de contrats possibles">
+            <ComboBox fx:id="contractTypeComboBox" prefHeight="26.0" prefWidth="223.0" promptText="type de contrats possibles">
                <HBox.margin>
                   <Insets bottom="10.0" right="10.0" top="10.0" />
                </HBox.margin></ComboBox>
-            <ComboBox prefWidth="150.0" promptText="site web">
+            <ComboBox fx:id="websiteComboBox" prefWidth="150.0" promptText="site web">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin></ComboBox>
@@ -54,7 +54,7 @@
             <Insets bottom="10.0" />
          </VBox.margin>
       </HBox>
-      <Button alignment="BOTTOM_RIGHT" mnemonicParsing="false" style="-fx-background-color: 2baa29;" text="Publier" textAlignment="CENTER">
+      <Button alignment="BOTTOM_RIGHT" onAction="#submitAd" mnemonicParsing="false" style="-fx-background-color: 2baa29;" text="Publier" textAlignment="CENTER">
          <effect>
             <DropShadow />
          </effect>

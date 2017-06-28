@@ -40,10 +40,6 @@ public class Website {
 
     @Override
     public String toString() {
-        return "Website{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", url='" + url + '\'' +
-                '}';
+        return this.name;
     }
 }
