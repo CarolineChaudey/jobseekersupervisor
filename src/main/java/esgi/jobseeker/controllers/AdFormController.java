@@ -8,9 +8,7 @@ import esgi.jobseeker.model.Website;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.controlsfx.control.CheckComboBox;
 
 import java.util.Arrays;
@@ -52,12 +50,42 @@ public class AdFormController {
     @FXML
     public void submitAd(ActionEvent event) throws Exception {
         System.out.println("AdFormController :: submitAd");
+        Integer parsedJobDuration;
+        try {
+            parsedJobDuration = Integer.parseInt(jobDuration.getText());
+        } catch (NumberFormatException e) {
+            parsedJobDuration = null;
+        }
         Ad ad = new Ad(null, position.getText(), description.getText(), contactEmail.getText(), urlApplication.getText(),
-                        company.getText(), Integer.parseInt(jobDuration.getText()), convertedTags(),
+                        company.getText(), parsedJobDuration, convertedTags(),
                         contractTypeCheckComboBox.getCheckModel().getCheckedItems(), websiteComboBox.getValue(), null);
         AdToSend adToSend = new AdToSend(ad);
         System.out.println(adToSend.toString());
-        WebserviceConnector.getInstance().saveAd(adToSend);
+        boolean hasSucceeded = WebserviceConnector.getInstance().saveAd(adToSend);
+        if (hasSucceeded) {
+            showDialog(Alert.AlertType.CONFIRMATION, "Annonce enregistrée.",
+                    "La nouvelle annonce est sauvegardée et en ligne.");
+            resetForm();
+        } else {
+            showDialog(Alert.AlertType.ERROR, "Echec enregistrement",
+                    "La nouvelle annonce n'a pas pu être enregistrée.");
+        }
+    }
+
+    private void showDialog(Alert.AlertType alertType, String title, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setContentText(content);
+    }
+
+    private void resetForm() {
+        position.setText("");
+        description.setText("");
+        contactEmail.setText("");
+        urlApplication.setText("");
+        jobDuration.setText("");
+        company.setText("");
+        tags.setText("");
     }
 
     private List<String> convertedTags() {

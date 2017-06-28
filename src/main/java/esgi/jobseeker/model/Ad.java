@@ -12,7 +12,7 @@ public class Ad {
     private String description;
     private String email;
     private String url;
-    private int jobDuration;
+    private Integer jobDuration;
     private Date publicationDate;
     private String company;
     private List<String> tags;
@@ -20,7 +20,7 @@ public class Ad {
     private Website website;
     private Supervisor author;
 
-    public Ad(String id, String position, String description, String email, String url, String company, int jobDuration,
+    public Ad(String id, String position, String description, String email, String url, String company, Integer jobDuration,
               List<String> tags, List<ContractType> proposedContracts, Website website, Supervisor author) {
         this.id = id;
         this.position = position;
@@ -76,7 +76,7 @@ public class Ad {
         this.url = url;
     }
 
-    public int getJobDuration() {
+    public Integer getJobDuration() {
         return jobDuration;
     }
 

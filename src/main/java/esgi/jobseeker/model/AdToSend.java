@@ -14,7 +14,7 @@ public class AdToSend {
     private String urlApplication;
     private Date publicationDate;
     private String company;
-    private int jobDuration;
+    private Integer jobDuration;
     private List<String> tags;
     private List<String> contractTypes;
     private String website;
@@ -94,7 +94,7 @@ public class AdToSend {
         return contractTypes;
     }
 
-    public int getJobDuration() {
+    public Integer getJobDuration() {
         return jobDuration;
     }
 
