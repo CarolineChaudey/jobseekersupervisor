@@ -2,6 +2,7 @@ package esgi.jobseeker.controllers;
 
 import esgi.jobseeker.WebserviceConnector;
 import esgi.jobseeker.model.Ad;
+import esgi.jobseeker.model.AdToSend;
 import esgi.jobseeker.model.ContractType;
 import esgi.jobseeker.model.Website;
 import javafx.collections.FXCollections;
@@ -30,7 +31,7 @@ public class AdFormController {
     @FXML
     private TextField jobDuration;
     @FXML
-    private TextField organization;
+    private TextField company;
     @FXML
     private TextField tags;
     @FXML
@@ -52,10 +53,11 @@ public class AdFormController {
     public void submitAd(ActionEvent event) throws Exception {
         System.out.println("AdFormController :: submitAd");
         Ad ad = new Ad(null, position.getText(), description.getText(), email.getText(), url.getText(),
-                        organization.getText(), convertedTags(), null, websiteComboBox.getValue(),
-                        null);
-        System.out.println(ad.toString());
-        WebserviceConnector.getInstance().saveAd(ad);
+                        company.getText(), convertedTags(), contractTypeCheckComboBox.getCheckModel().getCheckedItems(),
+                        websiteComboBox.getValue(), null);
+        AdToSend adToSend = new AdToSend(ad);
+        System.out.println(adToSend.toString());
+        WebserviceConnector.getInstance().saveAd(adToSend);
     }
 
     private List<String> convertedTags() {

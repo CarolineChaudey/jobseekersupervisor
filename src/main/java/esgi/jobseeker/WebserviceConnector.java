@@ -2,10 +2,7 @@ package esgi.jobseeker;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import esgi.jobseeker.model.Ad;
-import esgi.jobseeker.model.ContractType;
-import esgi.jobseeker.model.Login;
-import esgi.jobseeker.model.Website;
+import esgi.jobseeker.model.*;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -17,6 +14,7 @@ import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by caroline on 18/06/17.
@@ -50,14 +48,18 @@ public class WebserviceConnector {
         if (!verifyResponse(response, 200)) {
             return false;
         }
-        this.token = getContentFromResponse(response);
+        Type tokenType = new TypeToken<Map<String, String>>(){}.getType();
+        String brutResponse = getContentFromResponse(response);
+        Map<String, String> tokenMap = gson.fromJson(brutResponse, tokenType);
+        this.token = tokenMap.get("token");
         return true;
     }
 
-    public boolean saveAd(Ad ad) throws Exception {
+    public boolean saveAd(AdToSend ad) throws Exception {
+        System.out.println("JSON Ad : " + ad.toString());
         HttpPost postRequest = new HttpPost(this.urlBase + "/ads/");
         postRequest.addHeader("Content-Type", "application/json");
-        postRequest.addHeader("Authorisation", this.token);
+        postRequest.addHeader("Authorization", this.token);
         System.out.println(postRequest.getURI().toString());
         postRequest.setEntity(createStringEntity(ad));
         HttpResponse response = client.execute(postRequest);

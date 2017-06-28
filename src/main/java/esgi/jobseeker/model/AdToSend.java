@@ -1,13 +1,13 @@
 package esgi.jobseeker.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
- * Created by caroline on 27/06/17.
+ * Created by caroline on 28/06/17.
  */
-public class Ad {
-    private String id;
+public class AdToSend {
     private String position;
     private String description;
     private String email;
@@ -15,31 +15,29 @@ public class Ad {
     private Date publicationDate;
     private String company;
     private List<String> tags;
-    private List<ContractType> contractTypes;
-    private Website website;
-    private Supervisor author;
+    private List<String> contractTypes;
+    private String website;
 
-    public Ad(String id, String position, String description, String email, String url, String company,
-              List<String> tags, List<ContractType> proposedContracts, Website website, Supervisor author) {
-        this.id = id;
-        this.position = position;
-        this.description = description;
-        this.email = email;
-        this.url = url;
-        this.company = company;
-        this.tags = tags;
-        this.contractTypes = proposedContracts;
-        this.website = website;
-        this.author = author;
-        this.publicationDate = new Date();
+    public AdToSend(Ad ad) {
+        this.position = ad.getPosition();
+        this.description = ad.getDescription();
+        this.email = ad.getEmail();
+        this.url = ad.getUrl();
+        this.company = ad.getCompany();
+        this.tags = ad.getTags();
+        if (null != ad.getWebsite()) {
+            this.website = ad.getWebsite().getName();
+        }
+        this.publicationDate = ad.getPublicationDate();
+        this.contractTypes = parseContractTypes(ad.getContractTypes());
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    private List<String> parseContractTypes(List<ContractType> contractTypes) {
+        List<String> contractNames = new ArrayList<>();
+        for (ContractType ct : contractTypes) {
+            contractNames.add(ct.getName());
+        }
+        return contractNames;
     }
 
     public String getPosition() {
@@ -90,28 +88,20 @@ public class Ad {
         this.tags = tags;
     }
 
-    public List<ContractType> getContractTypes() {
+    public List<String> getContractTypes() {
         return contractTypes;
     }
 
-    public void setContractTypes(List<ContractType> contractTypes) {
+    public void setContractTypes(List<String> contractTypes) {
         this.contractTypes = contractTypes;
     }
 
-    public Website getWebsite() {
+    public String getWebsite() {
         return website;
     }
 
-    public void setWebsite(Website website) {
+    public void setWebsite(String website) {
         this.website = website;
-    }
-
-    public Supervisor getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Supervisor author) {
-        this.author = author;
     }
 
     public Date getPublicationDate() {
@@ -121,25 +111,10 @@ public class Ad {
     public void setPublicationDate(Date publicationDate) {
         this.publicationDate = publicationDate;
     }
-/*
-    public String toJson() {
-        return "{" +
-                "\"position:\"" + position + "," +
-                "\"description:\"" + description + "," +
-                "\"publicationDate:\"" + publicationDate + "," +
-                "\"email:\"" + email + "," +
-                "\"url:\"" + url + "," +
-                "\"company:\"" + company + "," +
-                "\"website:\"" + website + "," +
-                "\"tags:\"" + tags.toString() + "," +
-                "\"contractTypes:\"" + contractTypes.toString() + "," +
-                "}";
-    }
-*/
+
     @Override
     public String toString() {
         return "Ad{" +
-                "id='" + id + '\'' +
                 ", position='" + position + '\'' +
                 ", description='" + description + '\'' +
                 ", email='" + email + '\'' +
@@ -149,7 +124,6 @@ public class Ad {
                 ", tags=" + tags +
                 ", proposedContracts=" + contractTypes +
                 ", website=" + website +
-                ", author=" + author +
                 '}';
     }
 }
