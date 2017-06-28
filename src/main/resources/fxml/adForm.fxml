@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import org.controlsfx.control.CheckComboBox?>
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esgi.jobseeker.controllers.AdFormController">
    <children>
       <TextField fx:id="position" promptText="poste">
@@ -41,10 +42,11 @@
          </VBox.margin></TextField>
       <HBox prefHeight="48.0" prefWidth="600.0">
          <children>
-            <ComboBox fx:id="contractTypeComboBox" prefHeight="26.0" prefWidth="223.0" promptText="type de contrats possibles">
+            <CheckComboBox fx:id="contractTypeCheckComboBox" prefWidth="150.0">
                <HBox.margin>
-                  <Insets bottom="10.0" right="10.0" top="10.0" />
-               </HBox.margin></ComboBox>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </CheckComboBox>
             <ComboBox fx:id="websiteComboBox" prefWidth="150.0" promptText="site web">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -54,7 +56,7 @@
             <Insets bottom="10.0" />
          </VBox.margin>
       </HBox>
-      <Button alignment="BOTTOM_RIGHT" onAction="#submitAd" mnemonicParsing="false" style="-fx-background-color: 2baa29;" text="Publier" textAlignment="CENTER">
+      <Button alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#submitAd" style="-fx-background-color: 2baa29;" text="Publier" textAlignment="CENTER">
          <effect>
             <DropShadow />
          </effect>

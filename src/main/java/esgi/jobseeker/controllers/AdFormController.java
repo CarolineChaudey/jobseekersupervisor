@@ -10,10 +10,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import org.controlsfx.control.CheckComboBox;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.ResourceBundle;
 
 /**
  * Created by caroline on 27/06/17.
@@ -35,8 +35,10 @@ public class AdFormController {
     private TextField tags;
     @FXML
     private ComboBox<Website> websiteComboBox;
+    //@FXML
+    //private ComboBox<ContractType> contractTypeComboBox;
     @FXML
-    private ComboBox<ContractType> contractTypeComboBox;
+    private CheckComboBox<ContractType> contractTypeCheckComboBox;
 
 
     @FXML
@@ -45,7 +47,8 @@ public class AdFormController {
         List<Website> websites = WebserviceConnector.getInstance().getAllWebsites();
         List<ContractType> contractTypes = WebserviceConnector.getInstance().getAllContractTypes();
         websiteComboBox.setItems(FXCollections.observableArrayList(websites));
-        contractTypeComboBox.setItems(FXCollections.observableArrayList(contractTypes));
+        //contractTypeComboBox.setItems(FXCollections.observableArrayList(contractTypes));
+        contractTypeCheckComboBox.getItems().addAll(contractTypes);
     }
 
     @FXML
