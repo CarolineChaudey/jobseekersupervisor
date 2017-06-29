@@ -1,5 +1,6 @@
-package esgi.jobseeker;
+package esgi.jobseeker.controllers;
 
+import esgi.jobseeker.WebserviceConnector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

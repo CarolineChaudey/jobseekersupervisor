@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <?import javafx.scene.layout.Pane?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esgi.jobseeker.MenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esgi.jobseeker.controllers.MenuController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Annonces">
             <items>
-              <MenuItem disable="true" mnemonicParsing="false" text="Nouvelle" />
+              <MenuItem mnemonicParsing="false" text="Nouvelle annonce" onAction="#goToCreateAd" />
               <SeparatorMenuItem mnemonicParsing="false" />
               <MenuItem mnemonicParsing="false" text="Liste" onAction="#goToAds"/>
             </items>

@@ -4,17 +4,17 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 
-<ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esgi.jobseeker.controllers.AdsController">
    <content>
-      <TableView prefHeight="600.0" prefWidth="800.0">
+      <TableView prefHeight="600.0" prefWidth="800.0" fx:id="adsTable">
         <columns>
-          <TableColumn prefWidth="98.0" text="entreprise" />
-          <TableColumn prefWidth="86.0" text="poste" />
-            <TableColumn prefWidth="75.0" text="date" />
-            <TableColumn prefWidth="96.0" text="durée" />
-            <TableColumn prefWidth="84.0" text="contrats" />
-            <TableColumn prefWidth="77.0" text="modifier" />
-            <TableColumn prefWidth="54.0" text="clore" />
+          <TableColumn prefWidth="98.0" text="entreprise" fx:id="adCompany"/>
+          <TableColumn prefWidth="86.0" text="poste" fx:id="adPosition"/>
+          <TableColumn prefWidth="86.0" text="description" fx:id="adDescription"/>
+          <TableColumn prefWidth="75.0" text="date" fx:id="adPublicationDate"/>
+          <TableColumn prefWidth="96.0" text="durée" fx:id="adJobDuration"/>
+          <TableColumn prefWidth="84.0" text="contrats" fx:id="adContractTypes"/>
+          <TableColumn prefWidth="54.0" text="clore" fx:id="closeAd"/>
         </columns>
       </TableView>
    </content>
