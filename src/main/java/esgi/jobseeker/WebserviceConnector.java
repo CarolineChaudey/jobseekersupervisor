@@ -79,21 +79,29 @@ public class WebserviceConnector {
     }
 
     public List<Website> getAllWebsites() throws Exception {
-        HttpResponse response = sendGetRequest("/websites/");
+        HttpResponse response = sendGetRequest("/websites/", false);
         String jsonResponse = getResponseContent(response);
         Type listType = new TypeToken<ArrayList<Website>>(){}.getType();
         return gson.fromJson(jsonResponse, listType);
     }
 
     public List<ContractType> getAllContractTypes() throws Exception {
-        HttpResponse response = sendGetRequest("/contractTypes/");
+        HttpResponse response = sendGetRequest("/contractTypes/", false);
         String jsonResponse = getResponseContent(response);
         Type listType = new TypeToken<ArrayList<ContractType>>(){}.getType();
         return gson.fromJson(jsonResponse, listType);
     }
 
-    private HttpResponse sendGetRequest(String path) throws Exception {
+    public List<Ad> getAllAds() throws Exception {
+        HttpResponse response = sendGetRequest("/ads/getAds", true);
+        String jsonResponse = getResponseContent(response);
+        Type listType = new TypeToken<ArrayList<Ad>>(){}.getType();
+        return gson.fromJson(jsonResponse, listType);
+    }
+
+    private HttpResponse sendGetRequest(String path, boolean withToken) throws Exception {
         HttpGet getRequest = new HttpGet(this.urlBase + path);
+        getRequest.addHeader("Authorization", this.token);
         System.out.println(getRequest.getURI().toString());
         return client.execute(getRequest);
     }
