@@ -3,12 +3,18 @@ package esgi.jobseeker.controllers;
 import esgi.jobseeker.WebserviceConnector;
 import esgi.jobseeker.model.Ad;
 import esgi.jobseeker.model.AdForRow;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,5 +66,54 @@ public class AdsController {
         adEmail.setCellValueFactory(new PropertyValueFactory<Ad, String>("email"));
         adJobDuration.setCellValueFactory(new PropertyValueFactory<Ad, String>("jobDuration"));
         adPublicationDate.setCellValueFactory(new PropertyValueFactory<Ad, String>("publicationDate"));
+        setButtonColumn();
+    }
+
+    public void setButtonColumn() {
+        // pour qu'il n'y ai un bouton que sur les lignes remplies
+        closeAd.setCellValueFactory(new Callback<TableColumn.CellDataFeatures, ObservableValue>() {
+            @Override
+            public ObservableValue call(TableColumn.CellDataFeatures param) {
+                return new SimpleBooleanProperty(param.getValue() != null);
+            }
+        });
+        // ajout du bouton
+        closeAd.setCellFactory(new Callback<TableColumn, TableCell>() {
+            @Override
+            public TableCell call(TableColumn param) {
+                return new CloseAdCell(getStage(), adsTable);
+            }
+        });
+    }
+
+    private Stage getStage() {
+        Stage stage = (Stage) ((Node)(this.adsTable)).getScene().getWindow();
+        return stage;
+    }
+
+    // classe interne pour la cellule avec un bouton
+    private class CloseAdCell extends TableCell<AdForRow, Boolean> {
+        private Button closeButton = new Button("X");
+        //private StackPane paddedButton = new StackPane();
+
+        CloseAdCell(final Stage stage, final TableView table) {
+            closeButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    //
+                }
+            });
+        }
+
+        @Override
+        protected void updateItem(Boolean item, boolean empty) {
+            super.updateItem(item, empty);
+            if (!empty) {
+                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                setGraphic(closeButton);
+            } else {
+                setGraphic(null);
+            }
+        }
     }
 }
