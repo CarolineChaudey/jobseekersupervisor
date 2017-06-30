@@ -95,6 +95,7 @@ public class WebserviceConnector {
     public List<Ad> getAllAds() throws Exception {
         HttpResponse response = sendGetRequest("/ads/getAds", true);
         String jsonResponse = getResponseContent(response);
+        System.out.println("JSON ADS : " + jsonResponse);
         Type listType = new TypeToken<ArrayList<Ad>>(){}.getType();
         return gson.fromJson(jsonResponse, listType);
     }
