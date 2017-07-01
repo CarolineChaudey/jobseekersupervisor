@@ -10,9 +10,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -92,15 +94,30 @@ public class AdsController {
     }
 
     // classe interne pour la cellule avec un bouton
+    // apparemmment pas moyen de le faire en fxml
     private class CloseAdCell extends TableCell<AdForRow, Boolean> {
         private Button closeButton = new Button("X");
-        //private StackPane paddedButton = new StackPane();
+        private StackPane paddedButton = new StackPane();
 
         CloseAdCell(final Stage stage, final TableView table) {
+            paddedButton.setPadding(new Insets(3));
+            paddedButton.getChildren().add(closeButton);
             closeButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    //
+                    AdForRow adToDelete = (AdForRow) CloseAdCell.this.getTableView().getItems().get(CloseAdCell.this.getIndex());
+                    System.out.println(adToDelete.toString());
+                    try {
+                        boolean response = WebserviceConnector.getInstance().closeAd(adToDelete.getId());
+                        if (response) {
+                            System.out.println("Annonce clôturée.");
+                            getTableView().getItems().remove(adToDelete);
+                        } else {
+                            System.out.println("Echec clôture.");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Erreur : impossible de clore l\'annonce.");
+                    }
                 }
             });
         }
@@ -110,7 +127,7 @@ public class AdsController {
             super.updateItem(item, empty);
             if (!empty) {
                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-                setGraphic(closeButton);
+                setGraphic(paddedButton);
             } else {
                 setGraphic(null);
             }

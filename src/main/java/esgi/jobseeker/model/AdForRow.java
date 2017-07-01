@@ -18,6 +18,8 @@ public class AdForRow {
     public AdForRow(Ad ad) {
         super();
 
+        this.id = ad.getId();
+
         this.position = ad.getPosition();
 
         if (null == ad.getEmail()) {
