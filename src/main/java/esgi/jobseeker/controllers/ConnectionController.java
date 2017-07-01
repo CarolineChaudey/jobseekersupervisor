@@ -40,12 +40,12 @@ public class ConnectionController {
         try {
 
             root = FXMLLoader.load(getClass().getResource("/fxml/menu.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("JobSeekerSupervisor");
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-            Stage newStage = (Stage) ((Node)(this.loginField)).getScene().getWindow();
-            newStage.close();
+            Stage newStage = new Stage();
+            newStage.setTitle("JobSeekerSupervisor");
+            newStage.setScene(new Scene(root, 800, 600));
+            newStage.show();
+            Stage stage = (Stage) ((Node)(this.loginField)).getScene().getWindow();
+            stage.close();
         }
         catch (Exception e) {
             e.printStackTrace();

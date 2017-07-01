@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import esgi.jobseeker.model.*;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -64,9 +65,19 @@ public class WebserviceConnector {
         System.out.println(postRequest.getURI().toString());
         postRequest.setEntity(createStringEntity(ad));
         HttpResponse response = client.execute(postRequest);
-        boolean responseOk =verifyResponse(response, 201);
+        boolean responseOk = verifyResponse(response, 201);
         EntityUtils.consume(response.getEntity());
         return responseOk;
+    }
+
+    public boolean closeAd(String id) throws Exception {
+        System.out.println("Deleting Ad with id : " + id);
+        HttpDelete deleteRequest = new HttpDelete(this.urlBase + "/ads/" + id);
+        deleteRequest.addHeader("Authorization", this.token);
+        System.out.println(deleteRequest.getURI().toString());
+        HttpResponse response = client.execute(deleteRequest);
+        EntityUtils.consume(response.getEntity());
+        return verifyResponse(response, 200);
     }
 
     private boolean verifyResponse(HttpResponse response, int requiredCode) throws IOException {
@@ -95,6 +106,7 @@ public class WebserviceConnector {
     public List<Ad> getAllAds() throws Exception {
         HttpResponse response = sendGetRequest("/ads/getAds", true);
         String jsonResponse = getResponseContent(response);
+        System.out.println("JSON ADS : " + jsonResponse);
         Type listType = new TypeToken<ArrayList<Ad>>(){}.getType();
         return gson.fromJson(jsonResponse, listType);
     }
