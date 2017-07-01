@@ -14,6 +14,7 @@ public class AdForRow {
     private String jobDuration;
     private String publicationDate;
     private String company;
+    private String nbApplications;
 
     public AdForRow(Ad ad) {
         super();
@@ -40,6 +41,12 @@ public class AdForRow {
             this.company = "particulier";
         } else {
             this.company = ad.getCompany();
+        }
+
+        if (null == ad.getNbApplications()) {
+            this.nbApplications = "null";
+        } else {
+            this.nbApplications = ad.getNbApplications() + "";
         }
     }
 
@@ -96,15 +103,24 @@ public class AdForRow {
         this.company = company;
     }
 
+    public String getNbApplications() {
+        return nbApplications;
+    }
+
+    public void setNbApplications(String nbApplications) {
+        this.nbApplications = nbApplications;
+    }
+
     @Override
     public String toString() {
         return "AdForRow{" +
                 "id='" + id + '\'' +
                 ", position='" + position + '\'' +
                 ", email='" + email + '\'' +
-                ", jobDuration=" + jobDuration +
-                ", publicationDate=" + publicationDate +
+                ", jobDuration='" + jobDuration + '\'' +
+                ", publicationDate='" + publicationDate + '\'' +
                 ", company='" + company + '\'' +
+                ", nbApplications='" + nbApplications + '\'' +
                 '}';
     }
 }

@@ -8,12 +8,13 @@
    <content>
       <TableView fx:id="adsTable" prefHeight="600.0" prefWidth="800.0">
         <columns>
-          <TableColumn fx:id="adPosition" prefWidth="151.0" text="poste" />
-          <TableColumn fx:id="adPublicationDate" prefWidth="161.0" text="date de publication" />
-          <TableColumn fx:id="adEmail" prefWidth="117.0" text="contact" />
-          <TableColumn fx:id="adJobDuration" prefWidth="114.0" text="durée (mois)" />
-          <TableColumn fx:id="adCompany" prefWidth="149.0" text="entreprise" />
-          <TableColumn fx:id="closeAd" prefWidth="100.0" text="clore" />
+          <TableColumn fx:id="adPosition" prefWidth="135.0" text="poste" />
+          <TableColumn fx:id="adPublicationDate" prefWidth="100.0" text="publication" />
+          <TableColumn fx:id="adEmail" prefWidth="115.0" text="contact" />
+          <TableColumn fx:id="adJobDuration" prefWidth="116.0" text="durée (mois)" />
+          <TableColumn fx:id="adCompany" prefWidth="138.0" text="entreprise" />
+          <TableColumn fx:id="adNbApplications" prefWidth="113.0" text="candidatures" />
+          <TableColumn fx:id="closeAd" text="clore" />
         </columns>
       </TableView>
    </content>

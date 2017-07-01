@@ -58,7 +58,8 @@ public class AdFormController {
         }
         Ad ad = new Ad(null, position.getText(), description.getText(), contactEmail.getText(), urlApplication.getText(),
                         company.getText(), parsedJobDuration, convertedTags(),
-                        contractTypeCheckComboBox.getCheckModel().getCheckedItems(), websiteComboBox.getValue(), null);
+                        contractTypeCheckComboBox.getCheckModel().getCheckedItems(), websiteComboBox.getValue(), null,
+                        null);
         AdToSend adToSend = new AdToSend(ad);
         System.out.println(adToSend.toString());
         boolean hasSucceeded = WebserviceConnector.getInstance().saveAd(adToSend);

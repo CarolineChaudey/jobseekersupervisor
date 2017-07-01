@@ -19,9 +19,10 @@ public class Ad {
     private List<ContractType> contractTypes;
     private Website website;
     private Supervisor author;
+    private Integer nbApplications;
 
     public Ad(String id, String position, String description, String email, String url, String company, Integer jobDuration,
-              List<String> tags, List<ContractType> proposedContracts, Website website, Supervisor author) {
+              List<String> tags, List<ContractType> proposedContracts, Website website, Supervisor author, Integer nbApplications) {
         this.id = id;
         this.position = position;
         this.description = description;
@@ -34,6 +35,7 @@ public class Ad {
         this.website = website;
         this.author = author;
         this.publicationDate = new Date();
+        this.nbApplications = nbApplications;
     }
 
     public String getId() {
@@ -132,6 +134,18 @@ public class Ad {
         this.publicationDate = publicationDate;
     }
 
+    public void setJobDuration(Integer jobDuration) {
+        this.jobDuration = jobDuration;
+    }
+
+    public Integer getNbApplications() {
+        return nbApplications;
+    }
+
+    public void setNbApplications(Integer nbApplications) {
+        this.nbApplications = nbApplications;
+    }
+
     @Override
     public String toString() {
         return "Ad{" +
@@ -147,6 +161,7 @@ public class Ad {
                 ", contractTypes=" + contractTypes +
                 ", website=" + website +
                 ", author=" + author +
+                ", nbApplications=" + nbApplications +
                 '}';
     }
 }

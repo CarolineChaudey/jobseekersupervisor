@@ -39,6 +39,8 @@ public class AdsController {
     @FXML
     private TableColumn adJobDuration;
     @FXML
+    private TableColumn adNbApplications;
+    @FXML
     private TableColumn closeAd;
 
     private ObservableList<AdForRow> adObservableList;
@@ -48,7 +50,7 @@ public class AdsController {
         setColumsValues();
         List<Ad> adsData = WebserviceConnector.getInstance().getAllAds();
         List<AdForRow> adsForRow = convertIntoAdsForRow(adsData);
-        System.out.println("OBJECT ADS = " + adsForRow.toString());
+        System.out.println("OBJECT ADFORROW= " + adsForRow.toString());
 
         adObservableList = FXCollections.observableList(adsForRow);
         adsTable.setItems(adObservableList);
@@ -63,11 +65,12 @@ public class AdsController {
     }
 
     private void setColumsValues() {
-        adCompany.setCellValueFactory(new PropertyValueFactory<Ad, String>("company"));
-        adPosition.setCellValueFactory(new PropertyValueFactory<Ad, String>("position"));
-        adEmail.setCellValueFactory(new PropertyValueFactory<Ad, String>("email"));
-        adJobDuration.setCellValueFactory(new PropertyValueFactory<Ad, String>("jobDuration"));
-        adPublicationDate.setCellValueFactory(new PropertyValueFactory<Ad, String>("publicationDate"));
+        adCompany.setCellValueFactory(new PropertyValueFactory<AdForRow, String>("company"));
+        adPosition.setCellValueFactory(new PropertyValueFactory<AdForRow, String>("position"));
+        adEmail.setCellValueFactory(new PropertyValueFactory<AdForRow, String>("email"));
+        adJobDuration.setCellValueFactory(new PropertyValueFactory<AdForRow, String>("jobDuration"));
+        adPublicationDate.setCellValueFactory(new PropertyValueFactory<AdForRow, String>("publicationDate"));
+        adNbApplications.setCellValueFactory(new PropertyValueFactory<AdForRow, String>("nbApplications"));
         setButtonColumn();
     }
 
