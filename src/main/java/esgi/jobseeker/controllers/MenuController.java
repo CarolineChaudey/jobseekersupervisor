@@ -33,6 +33,12 @@ public class MenuController {
         changeSubView("/fxml/adForm.fxml");
     }
 
+    @FXML
+    public void goToGeneralStats(ActionEvent event) {
+        System.out.println("MenuController :: goToGeneralStats");
+        changeSubView("/fxml/generalStats.fxml");
+    }
+
     private void changeSubView(String subViewPath) {
         content.getChildren().clear();
         try {
