@@ -15,6 +15,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -108,6 +109,22 @@ public class WebserviceConnector {
         String jsonResponse = getResponseContent(response);
         System.out.println("JSON ADS : " + jsonResponse);
         Type listType = new TypeToken<ArrayList<Ad>>(){}.getType();
+        return gson.fromJson(jsonResponse, listType);
+    }
+
+    public List<QuantityPerDate> getAdFlowByTag(String tag) throws Exception {
+        String request = "/stats/getAdFlow/" + tag;
+        HttpResponse response = sendGetRequest(request, true);
+        String jsonResponse = getResponseContent(response);
+        Type listType = new TypeToken<List<QuantityPerDate>>(){}.getType();
+        return gson.fromJson(jsonResponse, listType);
+    }
+
+    public List<QuantityPerState> getAppGlobalStateByTag(String tag) throws Exception {
+        String request = "/stats/getAppGlobalState/" + tag;
+        HttpResponse response = sendGetRequest(request, true);
+        String jsonResponse = getResponseContent(response);
+        Type listType = new TypeToken<List<QuantityPerState>>(){}.getType();
         return gson.fromJson(jsonResponse, listType);
     }
 

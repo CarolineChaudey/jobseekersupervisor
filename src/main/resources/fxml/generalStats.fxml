@@ -4,7 +4,6 @@
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.chart.StackedAreaChart?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -19,8 +18,7 @@
       <HBox prefHeight="534.0" prefWidth="800.0">
          <children>
             <VBox prefHeight="534.0" prefWidth="489.0">
-               <Label text="Annonces/candidatures" />
-               <StackedAreaChart fx:id="adApplicationRatio">
+               <StackedAreaChart fx:id="adApplicationRatio" title="Annonces/candidatures envoyées">
                  <xAxis>
                    <NumberAxis side="BOTTOM" />
                  </xAxis>
@@ -30,8 +28,7 @@
                </StackedAreaChart>
             </VBox>
             <VBox>
-               <Label text="Etats des candidatures dans ce domaines" />
-               <PieChart fx:id="applicationStatePie" />
+               <PieChart fx:id="applicationStatePie" title="Etats des candidatures" />
             </VBox>
          </children></HBox>
    </children>
