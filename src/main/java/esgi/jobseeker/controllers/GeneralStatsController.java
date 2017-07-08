@@ -59,11 +59,6 @@ public class GeneralStatsController {
         adApplicationRatio.setData(series);
     }
 
-    private String formatDate(Date date) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        return simpleDateFormat.format(date);
-    }
-
     private void initPieChart() throws Exception {
         List<QuantityPerState> quantityPerStates = WebserviceConnector.getInstance().getAppGlobalStateByTag("dev");
         List<PieChart.Data> slices = new ArrayList<>();
@@ -71,19 +66,5 @@ public class GeneralStatsController {
             slices.add(new PieChart.Data(quantityPerState.getState(), quantityPerState.getNb()));
         }
         applicationStatePie.setData(FXCollections.observableArrayList(slices));
-    }
-
-    private List<String> getDateAxis(Integer interval) {
-        List<String> dateList = new ArrayList<>();
-        Calendar date = Calendar.getInstance();
-        date.add(Calendar.DAY_OF_MONTH, -(interval));
-        System.out.println(date.get(Calendar.DAY_OF_MONTH));
-
-        for (int i = 0; i < interval; i++) {
-            dateList.add(date.getTime().toString());
-            date.add(Calendar.DAY_OF_MONTH, 1);
-        }
-
-        return dateList;
     }
 }
