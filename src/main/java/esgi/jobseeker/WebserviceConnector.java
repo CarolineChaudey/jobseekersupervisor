@@ -120,6 +120,14 @@ public class WebserviceConnector {
         return gson.fromJson(jsonResponse, listType);
     }
 
+    public List<QuantityPerDate> getAppFlowByTag(String tag) throws Exception {
+        String request = "/stats/getAppFlow/" + tag;
+        HttpResponse response = sendGetRequest(request, true);
+        String jsonResponse = getResponseContent(response);
+        Type listType = new TypeToken<List<QuantityPerDate>>(){}.getType();
+        return gson.fromJson(jsonResponse, listType);
+    }
+
     public List<QuantityPerState> getAppGlobalStateByTag(String tag) throws Exception {
         String request = "/stats/getAppGlobalState/" + tag;
         HttpResponse response = sendGetRequest(request, true);

@@ -8,6 +8,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import esgi.jobseeker.util.DateAxis?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.chart.LineChart?>
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esgi.jobseeker.controllers.GeneralStatsController">
    <children>
       <HBox prefHeight="66.0" prefWidth="800.0">
@@ -18,14 +21,14 @@
       <HBox prefHeight="534.0" prefWidth="800.0">
          <children>
             <VBox prefHeight="534.0" prefWidth="489.0">
-               <StackedAreaChart fx:id="adApplicationRatio" title="Annonces/candidatures envoyées">
+               <LineChart fx:id="adApplicationRatio" title="Annonces/candidatures envoyées">
                  <xAxis>
-                   <NumberAxis side="BOTTOM" />
+                   <DateAxis side="BOTTOM" label="30 derniers jours" fx:id="bottomAxis"/>
                  </xAxis>
                  <yAxis>
-                   <NumberAxis side="LEFT" />
+                   <NumberAxis side="LEFT" label="quantité" fx:id="leftAxis"/>
                  </yAxis>
-               </StackedAreaChart>
+               </LineChart>
             </VBox>
             <VBox>
                <PieChart fx:id="applicationStatePie" title="Etats des candidatures" />
