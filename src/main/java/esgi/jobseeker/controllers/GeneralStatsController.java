@@ -23,10 +23,6 @@ public class GeneralStatsController {
     private LineChart<Date, Number> adApplicationRatio;
     @FXML
     private PieChart applicationStatePie;
-    @FXML
-    private DateAxis bottomAxis;
-    @FXML
-    private NumberAxis leftAxis;
 
     @FXML
     public void initialize() throws Exception {
