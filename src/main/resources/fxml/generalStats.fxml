@@ -16,7 +16,7 @@
       <HBox prefHeight="66.0" prefWidth="800.0">
          <children>
             <TextField fx:id="promptTag" alignment="CENTER" promptText="tag" />
-            <Button mnemonicParsing="false" text="Voir statistiques" />
+            <Button mnemonicParsing="false" text="Voir statistiques" onAction="#initCharts"/>
          </children></HBox>
       <HBox prefHeight="534.0" prefWidth="800.0">
          <children>

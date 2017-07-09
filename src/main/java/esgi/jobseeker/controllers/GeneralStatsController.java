@@ -6,6 +6,7 @@ import esgi.jobseeker.model.QuantityPerState;
 import esgi.jobseeker.util.DateAxis;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.*;
 import javafx.scene.control.TextField;
@@ -26,14 +27,12 @@ public class GeneralStatsController {
 
     @FXML
     public void initialize() throws Exception {
-        initPieChart();
-        initStackedChart();
     }
 
-    private void initStackedChart() throws Exception {
+    private void initStackedChart(String tag) throws Exception {
         // get data
-        List<QuantityPerDate> adFlowData = WebserviceConnector.getInstance().getAdFlowByTag("dev");
-        List<QuantityPerDate> appFlowData = WebserviceConnector.getInstance().getAppFlowByTag("dev");
+        List<QuantityPerDate> adFlowData = WebserviceConnector.getInstance().getAdFlowByTag(tag);
+        List<QuantityPerDate> appFlowData = WebserviceConnector.getInstance().getAppFlowByTag(tag);
 
         ObservableList<XYChart.Series<Date, Number>> series = FXCollections.observableArrayList();
 
@@ -55,12 +54,19 @@ public class GeneralStatsController {
         adApplicationRatio.setData(series);
     }
 
-    private void initPieChart() throws Exception {
-        List<QuantityPerState> quantityPerStates = WebserviceConnector.getInstance().getAppGlobalStateByTag("dev");
+    private void initPieChart(String tag) throws Exception {
+        List<QuantityPerState> quantityPerStates = WebserviceConnector.getInstance().getAppGlobalStateByTag(tag);
         List<PieChart.Data> slices = new ArrayList<>();
         for (QuantityPerState quantityPerState : quantityPerStates) {
             slices.add(new PieChart.Data(quantityPerState.getState(), quantityPerState.getNb()));
         }
         applicationStatePie.setData(FXCollections.observableArrayList(slices));
+    }
+
+    @FXML
+    public void initCharts(ActionEvent event) throws Exception {
+        String tag = promptTag.getText();
+        initStackedChart(tag);
+        initPieChart(tag);
     }
 }
