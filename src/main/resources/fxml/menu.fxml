@@ -18,20 +18,11 @@
               <MenuItem mnemonicParsing="false" text="Liste" onAction="#goToAds"/>
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Statistiques globales" disable="true">
+          <Menu mnemonicParsing="false" text="Statistiques">
             <items>
-<<<<<<< Updated upstream
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu disable="true" mnemonicParsing="false" text="Statistiques individuelles">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-=======
               <MenuItem mnemonicParsing="false" text="globales" onAction="#goToGeneralStats" />
               <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem mnemonicParsing="false" text="par chercheur" onAction="#goToIndivStats"/>
->>>>>>> Stashed changes
+              <MenuItem mnemonicParsing="false" text="par chercheur" onAction="#goToIndivStats" />
             </items>
           </Menu>
         </menus>
