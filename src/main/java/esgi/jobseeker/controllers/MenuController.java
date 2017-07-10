@@ -1,8 +1,5 @@
 package esgi.jobseeker.controllers;
 
-import esgi.jobseeker.WebserviceConnector;
-import esgi.jobseeker.model.ContractType;
-import esgi.jobseeker.model.Website;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Menu;
 import javafx.scene.layout.Pane;
 
-import java.util.List;
 
 /**
  * Created by caroline on 26/06/17.
@@ -31,6 +27,12 @@ public class MenuController {
     public void goToCreateAd(ActionEvent event) {
         System.out.println("MenuController :: goToCreateAd");
         changeSubView("/fxml/adForm.fxml");
+    }
+
+    @FXML
+    public void goToGeneralStats(ActionEvent event) {
+        System.out.println("MenuController :: goToGeneralStats");
+        changeSubView("/fxml/generalStats.fxml");
     }
 
     private void changeSubView(String subViewPath) {

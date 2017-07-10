@@ -74,7 +74,7 @@ public class AdsController {
         setButtonColumn();
     }
 
-    public void setButtonColumn() {
+    private void setButtonColumn() {
         // pour qu'il n'y ai un bouton que sur les lignes remplies
         closeAd.setCellValueFactory(new Callback<TableColumn.CellDataFeatures, ObservableValue>() {
             @Override
