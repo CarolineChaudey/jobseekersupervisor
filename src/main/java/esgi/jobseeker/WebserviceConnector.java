@@ -137,10 +137,17 @@ public class WebserviceConnector {
     }
 
     public List<Seeker> getSupervisorSeekers() throws Exception {
-        String request = "/users/supSeekers/";
-        HttpResponse response = sendGetRequest(request, true);
+        HttpResponse response = sendGetRequest("/users/supSeekers/", true);
         String jsonResponse = getResponseContent(response);
         Type listType = new TypeToken<List<Seeker>>(){}.getType();
+        return gson.fromJson(jsonResponse, listType);
+    }
+
+    public List<Application> getApplicationsBySeeker(String seekerId) throws Exception {
+        String request = "/applications/" + seekerId;
+        HttpResponse response = sendGetRequest(request, true);
+        String jsonResponse = getResponseContent(response);
+        Type listType = new TypeToken<List<Application>>(){}.getType();
         return gson.fromJson(jsonResponse, listType);
     }
 
