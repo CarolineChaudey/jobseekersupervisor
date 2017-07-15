@@ -5,12 +5,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.chart.PieChart?>
 <VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="esgi.jobseeker.controllers.IndivStatsController">
     <HBox>
         <ComboBox fx:id="seekerBox" />
         <Button mnemonicParsing="false" text="Voir" fx:id="submit" onAction="#onSeekerSelect" />
     </HBox>
     <HBox>
-
+        <PieChart fx:id="applicationStatePie" title="Etats des candidatures" />
     </HBox>
 </VBox>
