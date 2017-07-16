@@ -1,15 +1,20 @@
 package esgi.jobseeker.controllers;
 
 import esgi.jobseeker.WebserviceConnector;
+import esgi.jobseeker.model.AdForRow;
 import esgi.jobseeker.model.Application;
+import esgi.jobseeker.model.ApplicationForRow;
 import esgi.jobseeker.model.Seeker;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-import javax.print.DocFlavor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,24 +30,40 @@ public class IndivStatsController {
     private Button submit;
     @FXML
     private PieChart applicationStatePie;
-    private final String [] states = {"CREATED", "SENT", "REFUSED", "INTERVIEW", "ACCEPTED"};
+    @FXML
+    private TableView<ApplicationForRow> appTable;
+    @FXML
+    private TableColumn adPosition;
+    @FXML
+    private TableColumn date;
+    @FXML
+    private TableColumn adCompany;
+
+    private ObservableList<ApplicationForRow> adObservableList;
 
     @FXML
     public void initialize() throws Exception {
         List<Seeker> seekers = WebserviceConnector.getInstance().getSupervisorSeekers();
         System.out.println(seekers);
         seekerBox.setItems(FXCollections.observableList(seekers));
+        setColumsValues();
     }
 
     @FXML
     public void onSeekerSelect(javafx.event.ActionEvent event) throws Exception {
         Seeker seeker = seekerBox.getSelectionModel().getSelectedItem();
-        List<Application> apps = WebserviceConnector.getInstance().getApplicationsBySeeker(seeker.getId());
+        List<ApplicationForRow> apps = WebserviceConnector.getInstance().getApplicationsBySeeker(seeker.getId());
         System.out.println(apps);
         initPieChart(apps);
+        initTable(apps);
     }
 
-    private void initPieChart(List<Application> applications) throws Exception {
+    private void initTable(List<ApplicationForRow> applications) {
+        adObservableList = FXCollections.observableList(applications);
+        appTable.setItems(adObservableList);
+    }
+
+    private void initPieChart(List<ApplicationForRow> applications) throws Exception {
         List<PieChart.Data> slices = new ArrayList<>();
         Map<String, Integer> nbPerState = getNbPerState(applications);
         System.out.println(nbPerState);
@@ -52,9 +73,9 @@ public class IndivStatsController {
         applicationStatePie.setData(FXCollections.observableArrayList(slices));
     }
 
-    private Map<String, Integer> getNbPerState(List<Application> applications) {
+    private Map<String, Integer> getNbPerState(List<ApplicationForRow> applications) {
         Map<String, Integer> nbPerState = new HashMap<>();
-        for (Application app : applications) {
+        for (ApplicationForRow app : applications) {
             Integer nb = nbPerState.get(app.getState());
             if (nb == null) {
                 nbPerState.put(app.getState(), 1);
@@ -63,5 +84,11 @@ public class IndivStatsController {
             }
         }
         return nbPerState;
+    }
+
+    private void setColumsValues() {
+        adCompany.setCellValueFactory(new PropertyValueFactory<AdForRow, String>("company"));
+        adPosition.setCellValueFactory(new PropertyValueFactory<AdForRow, String>("position"));
+        date.setCellValueFactory(new PropertyValueFactory<AdForRow, String>("createdAt"));
     }
 }

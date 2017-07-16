@@ -143,11 +143,11 @@ public class WebserviceConnector {
         return gson.fromJson(jsonResponse, listType);
     }
 
-    public List<Application> getApplicationsBySeeker(String seekerId) throws Exception {
+    public List<ApplicationForRow> getApplicationsBySeeker(String seekerId) throws Exception {
         String request = "/applications/" + seekerId;
         HttpResponse response = sendGetRequest(request, true);
         String jsonResponse = getResponseContent(response);
-        Type listType = new TypeToken<List<Application>>(){}.getType();
+        Type listType = new TypeToken<List<ApplicationForRow>>(){}.getType();
         return gson.fromJson(jsonResponse, listType);
     }
 

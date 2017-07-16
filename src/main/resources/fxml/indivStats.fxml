@@ -15,7 +15,7 @@
     </HBox>
     <HBox>
         <PieChart fx:id="applicationStatePie" title="Etats des candidatures" />
-        <TableView fx:id="appTable" prefHeight="800.0" prefWidth="500.0">
+        <TableView fx:id="appTable" prefHeight="500.0" prefWidth="500.0">
             <columns>
                 <TableColumn fx:id="adPosition" prefWidth="135.0" text="poste" />
                 <TableColumn fx:id="date" prefWidth="100.0" text="date" />

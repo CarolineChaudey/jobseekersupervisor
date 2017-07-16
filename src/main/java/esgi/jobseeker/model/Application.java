@@ -10,9 +10,9 @@ public class Application {
     private String seekerId;
     private String letterId;
     private String resumeId;
-    private AdForRow ad;
+    private Ad ad;
 
-    public Application(String id, String state, String seekerId, String letterId, String resumeId, String adId, AdForRow ad) {
+    public Application(String id, String state, String seekerId, String letterId, String resumeId, Ad ad) {
         this.id = id;
         this.state = state;
         this.seekerId = seekerId;
@@ -61,11 +61,11 @@ public class Application {
         this.resumeId = resumeId;
     }
 
-    public AdForRow getAd() {
+    public Ad getAd() {
         return ad;
     }
 
-    public void setAd(AdForRow ad) {
+    public void setAd(Ad ad) {
         this.ad = ad;
     }
 
