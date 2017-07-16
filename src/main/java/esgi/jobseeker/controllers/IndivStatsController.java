@@ -9,6 +9,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
+import javax.print.DocFlavor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +25,7 @@ public class IndivStatsController {
     private Button submit;
     @FXML
     private PieChart applicationStatePie;
+    private final String [] states = {"CREATED", "SENT", "REFUSED", "INTERVIEW", "ACCEPTED"};
 
     @FXML
     public void initialize() throws Exception {

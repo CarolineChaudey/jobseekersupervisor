@@ -10,15 +10,15 @@ public class Application {
     private String seekerId;
     private String letterId;
     private String resumeId;
-    private String adId;
+    private AdForRow ad;
 
-    public Application(String id, String state, String seekerId, String letterId, String resumeId, String adId) {
+    public Application(String id, String state, String seekerId, String letterId, String resumeId, String adId, AdForRow ad) {
         this.id = id;
         this.state = state;
         this.seekerId = seekerId;
         this.letterId = letterId;
         this.resumeId = resumeId;
-        this.adId = adId;
+        this.ad = ad;
     }
 
     public String getId() {
@@ -61,12 +61,12 @@ public class Application {
         this.resumeId = resumeId;
     }
 
-    public String getAdId() {
-        return adId;
+    public AdForRow getAd() {
+        return ad;
     }
 
-    public void setAdId(String adId) {
-        this.adId = adId;
+    public void setAd(AdForRow ad) {
+        this.ad = ad;
     }
 
     @Override
@@ -77,7 +77,7 @@ public class Application {
                 ", seekerId='" + seekerId + '\'' +
                 ", letterId='" + letterId + '\'' +
                 ", resumeId='" + resumeId + '\'' +
-                ", adId='" + adId + '\'' +
+                ", ad=" + ad.toString() +
                 '}';
     }
 }
