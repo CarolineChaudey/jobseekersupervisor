@@ -11,8 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.controlsfx.control.CheckComboBox;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by caroline on 27/06/17.
@@ -91,9 +90,19 @@ public class AdFormController {
         tags.setText("");
     }
 
-    private List<String> convertedTags() {
+    private Set<String> convertedTags() {
         String brutTags = tags.getText();
+        brutTags = brutTags.toLowerCase().replaceAll("\\s", "");
+        System.out.println("formatted tag list : " + brutTags);
         String [] splitedTags = brutTags.split(",");
-        return Arrays.asList(splitedTags);
+        return arrayToSet(splitedTags);
+    }
+
+    private Set<String> arrayToSet(String [] array) {
+        Set<String> result = new HashSet<>();
+        for (String elem : array) {
+            result.add(elem);
+        }
+        return result;
     }
 }

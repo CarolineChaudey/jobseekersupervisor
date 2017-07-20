@@ -41,7 +41,7 @@ public class WebserviceConnector {
         this.urlBase = "http://" + HOST + ":" + PORT;
     }
 
-    public boolean getConnectionToken(String login, String pswd) throws Exception {
+    public boolean initConnectionToken(String login, String pswd) throws Exception {
         HttpPost postRequest = new HttpPost(this.urlBase + "/users/supervisor-auth");
         postRequest.addHeader("Content-Type", "application/json");
         System.out.println(postRequest.getURI().toString());

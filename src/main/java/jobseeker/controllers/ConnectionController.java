@@ -1,5 +1,6 @@
 package main.java.jobseeker.controllers;
 
+import javafx.scene.control.Alert;
 import main.java.jobseeker.WebserviceConnector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,18 +21,23 @@ public class ConnectionController {
     @FXML
     private void onConnectionClick(ActionEvent event) {
         try {
-            System.out.println("Login : " + loginField.getText() + "\nPassword : " + pswdField.getText());
-            boolean result = WebserviceConnector.getInstance().getConnectionToken(loginField.getText(),
-                    pswdField.getText());
+            boolean result = WebserviceConnector.getInstance().initConnectionToken(loginField.getText(), pswdField.getText());
             if (result) {
-                System.out.println("Success !");
                 changeWindow();
             } else {
-                System.out.println("Incorrect credentials.");
+                showDialog(Alert.AlertType.ERROR, "Mauvais login et/ou mot de passe.");
             }
         } catch (Exception e) {
-            System.out.println("Error while connecting.");
+            showDialog(Alert.AlertType.ERROR, "Avez-vous vérifié votre connexion internet ?");
         }
+    }
+
+    private void showDialog(Alert.AlertType alertType, String content) {
+        final String ERROR_DIALOG_TITLE = "Echec de la connexion";
+        Alert alert = new Alert(alertType);
+        alert.setTitle(ERROR_DIALOG_TITLE);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     private void changeWindow() {

@@ -1,7 +1,6 @@
 package main.java.jobseeker.model;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by caroline on 27/06/17.
@@ -31,6 +30,24 @@ public class Ad {
         this.company = company;
         this.jobDuration = jobDuration;
         this.tags = tags;
+        this.contractTypes = proposedContracts;
+        this.website = website;
+        this.author = author;
+        this.publicationDate = new Date();
+        this.nbApplications = nbApplications;
+    }
+
+    public Ad(String id, String position, String description, String email, String url, String company, Integer jobDuration,
+              Set<String> tags, List<ContractType> proposedContracts, Website website, Supervisor author, Integer nbApplications) {
+        this.id = id;
+        this.position = position;
+        this.description = description;
+        this.email = email;
+        this.url = url;
+        this.company = company;
+        this.jobDuration = jobDuration;
+        this.tags = new ArrayList<>();
+        this.tags.addAll(tags);
         this.contractTypes = proposedContracts;
         this.website = website;
         this.author = author;
