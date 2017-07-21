@@ -61,16 +61,48 @@ public class AdFormController {
                         null);
         AdToSend adToSend = new AdToSend(ad);
         System.out.println(adToSend.toString());
-        boolean hasSucceeded = WebserviceConnector.getInstance().saveAd(adToSend);
-        System.out.println(hasSucceeded);
-        if (hasSucceeded) {
-            showDialog(Alert.AlertType.INFORMATION, "Annonce enregistrée.",
-                    "La nouvelle annonce est sauvegardée et en ligne.");
-            resetForm();
+
+        String errorMsg = verifyAdToSendData(adToSend);
+        if (!errorMsg.equals("")) {
+            showDialog(Alert.AlertType.ERROR, "Annonce incomplète", errorMsg);
         } else {
-            showDialog(Alert.AlertType.ERROR, "Echec enregistrement",
-                    "La nouvelle annonce n'a pas pu être enregistrée.");
+            boolean result = WebserviceConnector.getInstance().saveAd(adToSend);
+            if (result) {
+                showDialog(Alert.AlertType.INFORMATION, "Annonce enregistrée",
+                        "La nouvelle annonce est sauvegardée et en ligne.");
+                resetForm();
+            } else {
+                showDialog(Alert.AlertType.ERROR, "Echec enregistrement",
+                        "La nouvelle annonce n'a pas pu être enregistrée.");
+            }
         }
+    }
+
+    private String verifyAdToSendData(AdToSend ad) {
+        List<String> emptyFields = new ArrayList<>();
+        if (ad.getPosition().equals("")) {
+            emptyFields.add("le champ poste doit être rempli.");
+        }
+        if (ad.getCompany().equals("")) {
+            emptyFields.add("le champ entreprise doit être rempli.");
+        }
+        if (ad.getTags().isEmpty() || ad.getTags().get(0).equals("")) {
+            emptyFields.add("il faut saisir au moins 1 tag.");
+        }
+        if (ad.getContractTypes().isEmpty()) {
+            emptyFields.add("il faut saisir au moins 1 type de contrat.");
+        }
+
+        if (emptyFields.isEmpty()) {
+            return "";
+        }
+
+        StringBuilder errorMessage = new StringBuilder();
+        for (String message : emptyFields) {
+            errorMessage.append(message);
+            errorMessage.append("\n");
+        }
+        return errorMessage.toString();
     }
 
     private void showDialog(Alert.AlertType alertType, String title, String content) {
