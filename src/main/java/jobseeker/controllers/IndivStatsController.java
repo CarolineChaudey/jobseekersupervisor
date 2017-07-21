@@ -37,6 +37,8 @@ public class IndivStatsController {
     private TableColumn date;
     @FXML
     private TableColumn adCompany;
+    @FXML
+    private TableColumn adState;
 
     private ObservableList<ApplicationForRow> adObservableList;
 
@@ -89,5 +91,6 @@ public class IndivStatsController {
         adCompany.setCellValueFactory(new PropertyValueFactory<AdForRow, String>("company"));
         adPosition.setCellValueFactory(new PropertyValueFactory<AdForRow, String>("position"));
         date.setCellValueFactory(new PropertyValueFactory<AdForRow, String>("createdAt"));
+        adState.setCellValueFactory(new PropertyValueFactory<AdForRow, String>("state"));
     }
 }
