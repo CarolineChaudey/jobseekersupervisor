@@ -65,6 +65,7 @@ public class WebserviceConnector {
         postRequest.addHeader("Authorization", this.token);
         System.out.println(postRequest.getURI().toString());
         postRequest.setEntity(createStringEntity(ad));
+        //System.out.println("Sent entity : " + postRequest.getEntity().toString());
         HttpResponse response = client.execute(postRequest);
         boolean responseOk = verifyResponse(response, 201);
         EntityUtils.consume(response.getEntity());
@@ -165,7 +166,8 @@ public class WebserviceConnector {
 
     private StringEntity createStringEntity(Object o) throws UnsupportedEncodingException {
         String param = gson.toJson(o);
-        return new StringEntity(param);
+        System.out.println("JSON param : " + param);
+        return new StringEntity(param, "UTF-8");
     }
 
     private String getContentFromResponse(HttpResponse response) throws IOException {
