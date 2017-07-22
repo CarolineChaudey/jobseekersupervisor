@@ -8,8 +8,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.jobseeker.controllers.IndivStatsController">
-    <HBox>
+<VBox prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.jobseeker.controllers.IndivStatsController">
+    <HBox prefHeight="100.0">
         <ComboBox fx:id="seekerBox" />
         <Button fx:id="submit" mnemonicParsing="false" onAction="#onSeekerSelect" text="Voir" />
     </HBox>

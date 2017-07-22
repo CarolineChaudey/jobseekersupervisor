@@ -10,59 +10,61 @@
 <?import javafx.scene.layout.VBox?>
 <?import org.controlsfx.control.CheckComboBox?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.jobseeker.controllers.AdFormController">
-   <children>
-      <TextField fx:id="position" promptText="poste" style="-fx-background-color: edca89;">
-         <VBox.margin>
-            <Insets bottom="10.0" />
-         </VBox.margin></TextField>
-      <TextArea fx:id="description" prefHeight="143.0" prefWidth="582.0" promptText="description">
-         <VBox.margin>
-            <Insets bottom="10.0" />
-         </VBox.margin></TextArea>
-      <TextField fx:id="contactEmail" promptText="contactEmail de contact">
-         <VBox.margin>
-            <Insets bottom="10.0" />
-         </VBox.margin></TextField>
-      <TextField fx:id="urlApplication" promptText="urlApplication de l'annonce">
-         <VBox.margin>
-            <Insets bottom="10.0" />
-         </VBox.margin></TextField>
-      <TextField fx:id="jobDuration" promptText="durée (en mois)">
-         <VBox.margin>
-            <Insets bottom="10.0" />
-         </VBox.margin></TextField>
-      <TextField fx:id="company" promptText="entreprise" style="-fx-background-color: edca89;">
-         <VBox.margin>
-            <Insets bottom="10.0" />
-         </VBox.margin></TextField>
-      <TextField fx:id="tags" promptText="tags associés (séparés par une virgule)" style="-fx-background-color: edca89;">
-         <VBox.margin>
-            <Insets bottom="10.0" />
-         </VBox.margin></TextField>
-      <HBox prefHeight="48.0" prefWidth="600.0">
-         <children>
-            <CheckComboBox fx:id="contractTypeCheckComboBox" prefWidth="150.0" style="-fx-background-color: edca89;">
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin>
-            </CheckComboBox>
-            <ComboBox fx:id="websiteComboBox" prefWidth="150.0" promptText="site web">
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin></ComboBox>
-         </children>
-         <VBox.margin>
-            <Insets bottom="10.0" />
-         </VBox.margin>
-      </HBox>
-      <Button alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#submitAd" style="-fx-background-color: 2baa29;" text="Publier" textAlignment="CENTER">
-         <effect>
-            <DropShadow />
-         </effect>
-      </Button>
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+
+   <VBox fx:controller="main.java.jobseeker.controllers.AdFormController" alignment="TOP_CENTER"  xmlns="http://javafx.com/javafx/8.0.112"
+         xmlns:fx="http://javafx.com/fxml/1" prefHeight="700" prefWidth="1000">
+      <children>
+         <TextField fx:id="position" promptText="poste" style="-fx-background-color: edca89;">
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin></TextField>
+         <TextArea fx:id="description" prefHeight="143.0" prefWidth="582.0" promptText="description">
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin></TextArea>
+         <TextField fx:id="contactEmail" promptText="contactEmail de contact">
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin></TextField>
+         <TextField fx:id="urlApplication" promptText="urlApplication de l'annonce">
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin></TextField>
+         <TextField fx:id="jobDuration" promptText="durée (en mois)">
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin></TextField>
+         <TextField fx:id="company" promptText="entreprise" style="-fx-background-color: edca89;">
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin></TextField>
+         <TextField fx:id="tags" promptText="tags associés (séparés par une virgule)" style="-fx-background-color: edca89;">
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin></TextField>
+         <HBox prefHeight="48.0" prefWidth="600.0">
+            <children>
+               <CheckComboBox fx:id="contractTypeCheckComboBox" prefWidth="150.0" style="-fx-background-color: edca89;">
+                  <HBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </HBox.margin>
+               </CheckComboBox>
+               <ComboBox fx:id="websiteComboBox" prefWidth="150.0" promptText="site web">
+                  <HBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </HBox.margin></ComboBox>
+            </children>
+            <VBox.margin>
+               <Insets bottom="10.0" />
+            </VBox.margin>
+         </HBox>
+         <Button alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#submitAd" style="-fx-background-color: 2baa29;" text="Publier" textAlignment="CENTER">
+            <effect>
+               <DropShadow />
+            </effect>
+         </Button>
+      </children>
+      <padding>
+         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+      </padding>
+   </VBox>

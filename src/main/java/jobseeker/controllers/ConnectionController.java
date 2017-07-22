@@ -48,7 +48,7 @@ public class ConnectionController {
             root = FXMLLoader.load(getClass().getResource("/fxml/menu.fxml"));
             Stage newStage = new Stage();
             newStage.setTitle("JobSeekerSupervisor");
-            newStage.setScene(new Scene(root, 800, 600));
+            newStage.setScene(new Scene(root, 1000, 800));
             newStage.show();
             Stage stage = (Stage) ((Node)(this.loginField)).getScene().getWindow();
             stage.close();

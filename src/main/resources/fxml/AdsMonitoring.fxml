@@ -4,17 +4,19 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 
-<ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.jobseeker.controllers.AdsController">
+<ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="700" prefWidth="1000" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="main.java.jobseeker.controllers.AdsController" >
    <content>
-      <TableView fx:id="adsTable" prefHeight="600.0" prefWidth="800.0">
+      <TableView fx:id="adsTable" prefHeight="680" prefWidth="995" >
         <columns>
-          <TableColumn fx:id="adPosition" prefWidth="135.0" text="poste" />
+          <TableColumn fx:id="adPosition" prefWidth="200.0" text="poste" />
           <TableColumn fx:id="adPublicationDate" prefWidth="100.0" text="publication" />
-          <TableColumn fx:id="adEmail" prefWidth="115.0" text="contact" />
+          <TableColumn fx:id="adEmail" prefWidth="170.0" text="contact" />
           <TableColumn fx:id="adJobDuration" prefWidth="116.0" text="durée (mois)" />
-          <TableColumn fx:id="adCompany" prefWidth="138.0" text="entreprise" />
+          <TableColumn fx:id="adCompany" prefWidth="150.0" text="entreprise" />
           <TableColumn fx:id="adNbApplications" prefWidth="113.0" text="candidatures" />
-          <TableColumn fx:id="closeAd" text="clore" />
+          <TableColumn fx:id="closeAd" prefWidth="60.0" text="clore" />
         </columns>
       </TableView>
    </content>
